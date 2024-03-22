@@ -1,4 +1,10 @@
 ﻿  unity_T0JG9MDR21QQZIU6.cpp
+D:\HongLab Study\Practice_1\DataStructues\Swap.cpp(280,7): warning C4101: 'i' :참조되지 않은 지역 변수입니다.
+  (소스 파일 '../Intermediate/Debug/unity_T0JG9MDR21QQZIU6.cpp'을(를) 컴파일하는 중)
+  
+D:\HongLab Study\Practice_1\DataStructues\Swap.cpp(280,10): warning C4101: 'key' :참조되지 않은 지역 변수입니다.
+  (소스 파일 '../Intermediate/Debug/unity_T0JG9MDR21QQZIU6.cpp'을(를) 컴파일하는 중)
+  
   DataStructues.vcxproj -> D:\HongLab Study\Practice_1\Binaries\DataStructues.exe
   'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
   배치 파일이 아닙니다.

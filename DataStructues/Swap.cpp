@@ -1,6 +1,14 @@
 #include "Swap.h"
 #include <iostream>
 #include <algorithm>
+#include <fstream>
+#include <cassert>
+
+struct Element
+{
+	int key;
+	char value;
+};
 
 Swap::Swap()
 {
@@ -136,28 +144,209 @@ void Swap::Find_MinIndex()
 
 void Swap::Selection_Sort()
 {
-	int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
-	int size = sizeof(arr) / sizeof(arr[0]);
+	//int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
+	//int size = sizeof(arr) / sizeof(arr[0]);
 
-	int min_index = 0;
-	for (int i = 0; i < size - 1; ++i)
+	//int min_index = 0;
+	//for (int i = 0; i < size - 1; ++i)
+	//{
+	//	// TODO
+	//	// 가장 작은 인덱스를 찾아서 스왑.
+	//	min_index = i;
+	//	for (int j = 1 + i; j < size; ++j)
+	//	{
+	//		if (arr[j] < arr[min_index])
+	//			min_index = j;
+	//	}
+
+	//	std::swap(arr[min_index], arr[i]);
+
+	//	Print(arr, size);
+
+	//	std::cout << std::boolalpha;
+	//	std::cout << CheckSorted(arr, size);
+	//	std::cout << std::endl;
+	//}
+
+
+	// 시간복잡도 확인
+
 	{
-		// TODO
-		// 가장 작은 인덱스를 찾아서 스왑.
-		min_index = i;
-		for (int j = 1 + i; j < size; ++j)
-		{
-			if (arr[j] < arr[min_index])
-				min_index = j;
-		}
+		//std::ofstream ofile("log.txt");
+		//for (int size = 1; size < 1000; ++size)
+		//{
+		//	int count = 0;
+		//	int* arr = new int[size];
+		//	for (int s = 0; s < size; ++s)
+		//		arr[s] = size - s;
 
-		std::swap(arr[min_index], arr[i]);
+		//	int min_index;
+		//	for (int i = 0; i < size - 1; ++i)
+		//	{
+		//		min_index = i;
+		//		for (int j = i + 1; j < size; ++j)
+		//		{
+		//			++count;
+		//			if (arr[i] < arr[min_index])
+		//				min_index = j;
+		//		}
+
+		//		std::swap(arr[i], arr[min_index]);
+		//	}
+
+		//	ofile << size << ", " << count << std::endl;
+
+		//	delete[]arr;
+		//}
+
+		//ofile.close();
+	}
+
+
+
+	// 안전성 확인(unstable)
+	{
+		Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
+		int size = sizeof(arr) / sizeof(arr[0]);
 
 		Print(arr, size);
 
-		std::cout << std::boolalpha;
-		std::cout << CheckSorted(arr, size);
-		std::cout << std::endl;
+		int min_index;
+		for (int i = 0; i < size - 1; ++i)
+		{
+			min_index = i;
+			for (int j = i + 1; j < size; ++j)
+			{
+				if (arr[j].key < arr[min_index].key)
+					min_index = j;
+			}
+			std::swap(arr[i], arr[min_index]);
+
+			Print(arr, size);
+		}
+	}
+
+
+}
+
+void Swap::Bubble_Sort()
+{
+	//int arr[] = { 5, 1, 4, 2, 8 };
+	//int arr[] = { 5, 4, 3, 2, 1 };
+	int arr[] = { 1,2,3,4,5 };
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	Print(arr, n);
+	std::cout << std::endl;
+
+	// Bubble Sort
+	// 이미 정렬이 되있거나, 거의 정렬이 되어있는 경우 버블소트가 빠르다.
+	// 경우에 따라서 정렬 알고리즘의 속도가 달라짐.
+	{
+		for (int i = 0; i < n - 1; ++i)
+		{
+			bool swapped = false;
+
+			for(int j = 0; j < n - i - 1; ++j)
+			//for (int j = 0; j < n - 1; ++j)
+			{
+				if (arr[j] > arr[j + 1])
+				{
+					std::swap(arr[j], arr[j + 1]);
+					swapped = true;
+				}
+
+				Print(arr, n);
+			}
+
+			std::cout << std::endl;
+
+			if (false == swapped)
+				break;
+		}
+	}
+}
+
+void Swap::Insertion_Sort()
+{
+	// 오른 쪽으로 하나 밀기
+	{
+		int arr[] = { 1,2,4,5,3,6 };
+		//int arr[] = { 1,2,3,4,5,6 };
+		int n = sizeof(arr) / sizeof(arr[0]);
+		Print(arr, n);
+
+
+		int i, key, j;
+		{
+#pragma region Me
+			// TODO
+			//for (i = n - 1; i > 0; --i)
+			//{
+			//	key = arr[i];
+
+			//	for (j = i; j > 0 && arr[j - 1] > key; --j)
+			//	{
+			//		arr[j] = arr[j - 1];
+
+			//		std::cout << "Inner ";
+			//		Print(arr, n);
+			//	}
+
+			//	arr[j] = key;
+
+			//	std::cout << "Outer ";
+			//	Print(arr, n);
+			//}
+#pragma endregion Me
+
+
+#pragma region	HongLab
+				//for (i = 1; i < n; ++i)
+			//{
+			//	key = arr[i];
+			//	for (j = i; j > 0 && arr[j - 1] > key; --j)
+			//	{
+			//		arr[j] = arr[j - 1];
+			//		Print(arr, n);
+			//	}
+
+			//	arr[j] = key;
+			//	Print(arr, n);
+			//}
+#pragma endregion HongLab
+
+#pragma region HongLabWhile
+			for (int i = 1; i < n; ++i)
+			{
+				int key = arr[i];
+				j = i - 1;
+
+				while (j >= 0 && arr[j] > key)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+					Print(arr, n);
+				}
+
+				arr[j + 1] = key;
+				Print(arr, n);
+			}
+#pragma endregion
+
+
+
+	/*		for (; j > 0 && arr[j - 1] > key; --j)
+			{
+				arr[j] = arr[j - 1];
+				Print(arr, n);
+			}
+
+			arr[j] = key;
+
+			Print(arr, n);
+			std::cout << std::endl;*/
+		}
 	}
 }
 
@@ -183,6 +372,21 @@ void Swap::Print(int* arr, int size)
 {
 	for (int i = 0; i < size; ++i)
 		std::cout << arr[i] << " ";
+
+	std::cout << std::endl;
+}
+
+void Swap::Print(Element* arr, int size)
+{
+	for (int i = 0; i < size; ++i)
+		std::cout << arr[i].key << " ";
+
+	std::cout << std::endl;
+
+	for (int i = 0; i < size; ++i)
+		std::cout << arr[i].value << " ";
+
+	std::cout << std::endl;
 }
 
 void Swap::Run()
@@ -199,5 +403,12 @@ void Swap::Run()
 	//MyAscendingSort_Three();
 	//Find_MinNumber();
 	//Find_MinIndex();
-	Selection_Sort();
+	
+	// Sort
+	{
+		//Selection_Sort();
+		//Bubble_Sort();
+		Insertion_Sort();
+	}
+
 }

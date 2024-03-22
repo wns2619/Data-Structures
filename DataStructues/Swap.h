@@ -14,11 +14,15 @@ public:
 	void MyAscendingSort_Three();
 	void Find_MinNumber();
 	void Find_MinIndex();
-	void Selection_Sort();
 	bool CheckSorted(int a, int b);
 	bool CheckSorted(int arr[], int b);
 	void Print(int* arr, int size);
+	void Print(struct Element* arr, int size);
 	void Run();
+
+	void Selection_Sort();
+	void Bubble_Sort();
+	void Insertion_Sort();
 private:
 
 };
