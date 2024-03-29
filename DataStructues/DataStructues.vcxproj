@@ -140,9 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp" />
+    <ClCompile Include="Searching.cpp" />
+    <ClCompile Include="StringAlgorithm.cpp" />
     <ClCompile Include="Swap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Searching.h" />
+    <ClInclude Include="StringAlgorithm.h" />
     <ClInclude Include="Swap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

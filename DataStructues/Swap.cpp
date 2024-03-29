@@ -74,9 +74,7 @@ void Swap::MyAscendingSort_Three()
 					}
 
 				// 첫 번째는 가장 작은 자리를 찾아서 0번째 인덱스에 넣는다. 0번째 인덱스는 그 자리로 스왑함.
-
-
-
+				
 				//if (arr[0] > arr[1])
 				//	std::swap(arr[0], arr[1]);
 
@@ -144,29 +142,29 @@ void Swap::Find_MinIndex()
 
 void Swap::Selection_Sort()
 {
-	//int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
-	//int size = sizeof(arr) / sizeof(arr[0]);
+	int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
+	int size = sizeof(arr) / sizeof(arr[0]);
 
-	//int min_index = 0;
-	//for (int i = 0; i < size - 1; ++i)
-	//{
-	//	// TODO
-	//	// 가장 작은 인덱스를 찾아서 스왑.
-	//	min_index = i;
-	//	for (int j = 1 + i; j < size; ++j)
-	//	{
-	//		if (arr[j] < arr[min_index])
-	//			min_index = j;
-	//	}
+	int min_index = 0;
+	for (int i = 0; i < size - 1; ++i)
+	{
+		// TODO
+		// 가장 작은 인덱스를 찾아서 스왑.
+		min_index = i;
+		for (int j = 1 + i; j < size; ++j)
+		{
+			if (arr[j] < arr[min_index])
+				min_index = j;
+		}
 
-	//	std::swap(arr[min_index], arr[i]);
+		std::swap(arr[min_index], arr[i]);
 
-	//	Print(arr, size);
+		Print(arr, size);
 
-	//	std::cout << std::boolalpha;
-	//	std::cout << CheckSorted(arr, size);
-	//	std::cout << std::endl;
-	//}
+		std::cout << std::boolalpha;
+		std::cout << CheckSorted(arr, size);
+		std::cout << std::endl;
+	}
 
 
 	// 시간복잡도 확인
@@ -204,36 +202,36 @@ void Swap::Selection_Sort()
 
 
 
-	// 안전성 확인(unstable)
-	{
-		Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
-		int size = sizeof(arr) / sizeof(arr[0]);
+	//// 안전성 확인(unstable)
+	//{
+	//	Element arr[] = { {2, 'a'}, {2, 'b'}, {1, 'c'} };
+	//	int size = sizeof(arr) / sizeof(arr[0]);
 
-		Print(arr, size);
+	//	Print(arr, size);
 
-		int min_index;
-		for (int i = 0; i < size - 1; ++i)
-		{
-			min_index = i;
-			for (int j = i + 1; j < size; ++j)
-			{
-				if (arr[j].key < arr[min_index].key)
-					min_index = j;
-			}
-			std::swap(arr[i], arr[min_index]);
+	//	int min_index;
+	//	for (int i = 0; i < size - 1; ++i)
+	//	{
+	//		min_index = i;
+	//		for (int j = i + 1; j < size; ++j)
+	//		{
+	//			if (arr[j].key < arr[min_index].key)
+	//				min_index = j;
+	//		}
+	//		std::swap(arr[i], arr[min_index]);
 
-			Print(arr, size);
-		}
-	}
+	//		Print(arr, size);
+	//	}
+	//}
 
 
 }
 
 void Swap::Bubble_Sort()
 {
-	//int arr[] = { 5, 1, 4, 2, 8 };
+	int arr[] = { 5, 1, 4, 2, 8 };
 	//int arr[] = { 5, 4, 3, 2, 1 };
-	int arr[] = { 1,2,3,4,5 };
+	//int arr[] = { 1,2,3,4,5 };
 	int n = sizeof(arr) / sizeof(arr[0]);
 
 	Print(arr, n);
@@ -246,7 +244,7 @@ void Swap::Bubble_Sort()
 		for (int i = 0; i < n - 1; ++i)
 		{
 			bool swapped = false;
-
+			
 			for(int j = 0; j < n - i - 1; ++j)
 			//for (int j = 0; j < n - 1; ++j)
 			{
@@ -281,23 +279,23 @@ void Swap::Insertion_Sort()
 		{
 #pragma region Me
 			// TODO
-			//for (i = n - 1; i > 0; --i)
-			//{
-			//	key = arr[i];
+			for (i = n - 1; i > 0; --i)
+			{
+				key = arr[i];
 
-			//	for (j = i; j > 0 && arr[j - 1] > key; --j)
-			//	{
-			//		arr[j] = arr[j - 1];
+				for (j = i; j > 0 && arr[j - 1] > key; --j)
+				{
+					arr[j] = arr[j - 1];
 
-			//		std::cout << "Inner ";
-			//		Print(arr, n);
-			//	}
+					std::cout << "Inner ";
+					Print(arr, n);
+				}
 
-			//	arr[j] = key;
+				arr[j] = key;
 
-			//	std::cout << "Outer ";
-			//	Print(arr, n);
-			//}
+				std::cout << "Outer ";
+				Print(arr, n);
+			}
 #pragma endregion Me
 
 
@@ -317,21 +315,21 @@ void Swap::Insertion_Sort()
 #pragma endregion HongLab
 
 #pragma region HongLabWhile
-			for (int i = 1; i < n; ++i)
-			{
-				int key = arr[i];
-				j = i - 1;
+			//for (int i = 1; i < n; ++i)
+			//{
+			//	int key = arr[i];
+			//	j = i - 1;
 
-				while (j >= 0 && arr[j] > key)
-				{
-					arr[j + 1] = arr[j];
-					j = j - 1;
-					Print(arr, n);
-				}
+			//	while (j >= 0 && arr[j] > key)
+			//	{
+			//		arr[j + 1] = arr[j];
+			//		j = j - 1;
+			//		Print(arr, n);
+			//	}
 
-				arr[j + 1] = key;
-				Print(arr, n);
-			}
+			//	arr[j + 1] = key;
+			//	Print(arr, n);
+			//}
 #pragma endregion
 
 

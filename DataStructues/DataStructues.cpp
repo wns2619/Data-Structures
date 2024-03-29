@@ -3,11 +3,14 @@
 
 
 #include "Swap.h"
+#include "Searching.h"
+#include "StringAlgorithm.h"
 
 int main()
 {
-	Swap theExample;
-
+	//Swap theExample;
+	//Searching theExample;
+	StringAlgorithm theExample;
 
 	theExample.Run();
 
