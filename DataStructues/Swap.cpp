@@ -10,6 +10,9 @@ struct Element
 	char value;
 };
 
+inline int ascend(int x, int y) { return y - x; }
+inline int descend(int x, int y) { return x - y; }
+
 Swap::Swap()
 {
 }
@@ -142,29 +145,29 @@ void Swap::Find_MinIndex()
 
 void Swap::Selection_Sort()
 {
-	int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
-	int size = sizeof(arr) / sizeof(arr[0]);
+	//int arr[] = { 8, 3, 2, 5, 1, 1, 2, 5, 8, 9 };
+	//int size = sizeof(arr) / sizeof(arr[0]);
 
-	int min_index = 0;
-	for (int i = 0; i < size - 1; ++i)
-	{
-		// TODO
-		// 가장 작은 인덱스를 찾아서 스왑.
-		min_index = i;
-		for (int j = 1 + i; j < size; ++j)
-		{
-			if (arr[j] < arr[min_index])
-				min_index = j;
-		}
+	//int min_index = 0;
+	//for (int i = 0; i < size - 1; ++i)
+	//{
+	//	// TODO
+	//	// 가장 작은 인덱스를 찾아서 스왑.
+	//	min_index = i;
+	//	for (int j = 1 + i; j < size; ++j)
+	//	{
+	//		if (arr[j] < arr[min_index])
+	//			min_index = j;
+	//	}
 
-		std::swap(arr[min_index], arr[i]);
+	//	std::swap(arr[min_index], arr[i]);
 
-		Print(arr, size);
+	//	Print(arr, size);
 
-		std::cout << std::boolalpha;
-		std::cout << CheckSorted(arr, size);
-		std::cout << std::endl;
-	}
+	//	std::cout << std::boolalpha;
+	//	std::cout << CheckSorted(arr, size);
+	//	std::cout << std::endl;
+	//}
 
 
 	// 시간복잡도 확인
@@ -230,8 +233,6 @@ void Swap::Selection_Sort()
 void Swap::Bubble_Sort()
 {
 	int arr[] = { 5, 1, 4, 2, 8 };
-	//int arr[] = { 5, 4, 3, 2, 1 };
-	//int arr[] = { 1,2,3,4,5 };
 	int n = sizeof(arr) / sizeof(arr[0]);
 
 	Print(arr, n);
@@ -269,7 +270,7 @@ void Swap::Insertion_Sort()
 {
 	// 오른 쪽으로 하나 밀기
 	{
-		int arr[] = { 1,2,4,5,3,6 };
+		int arr[] = { 2,1,4,5,3,6 };
 		//int arr[] = { 1,2,3,4,5,6 };
 		int n = sizeof(arr) / sizeof(arr[0]);
 		Print(arr, n);
@@ -279,28 +280,28 @@ void Swap::Insertion_Sort()
 		{
 #pragma region Me
 			// TODO
-			for (i = n - 1; i > 0; --i)
-			{
-				key = arr[i];
+			//for (i = n - 1; i > 0; --i)
+			//{
+			//	key = arr[i];
 
-				for (j = i; j > 0 && arr[j - 1] > key; --j)
-				{
-					arr[j] = arr[j - 1];
+			//	for (j = i; j > 0 && arr[j - 1] > key; --j)
+			//	{
+			//		arr[j] = arr[j - 1];
 
-					std::cout << "Inner ";
-					Print(arr, n);
-				}
+			//		std::cout << "Inner ";
+			//		Print(arr, n);
+			//	}
 
-				arr[j] = key;
+			//	arr[j] = key;
 
-				std::cout << "Outer ";
-				Print(arr, n);
-			}
+			//	std::cout << "Outer ";
+			//	Print(arr, n);
+			//}
 #pragma endregion Me
 
 
 #pragma region	HongLab
-				//for (i = 1; i < n; ++i)
+			//	for (i = 1; i < n; ++i)
 			//{
 			//	key = arr[i];
 			//	for (j = i; j > 0 && arr[j - 1] > key; --j)
@@ -344,6 +345,21 @@ void Swap::Insertion_Sort()
 
 			Print(arr, n);
 			std::cout << std::endl;*/
+
+			for (i = 1; i < n; ++i)
+			{
+				int key = arr[i];
+				// key = 1
+				int j; // j = 2이다. 1 - 2가 되면 -1이니까, 조건에 들어가서 바뀌고.
+				for (j = i - 1; j >= 0 && ascend(arr[j], key) < 0; --j)
+					arr[j + 1] = arr[j];
+
+				// 애는 0에 key 들어가니까 0번 인덱스 1
+				arr[j + 1] = key;
+			}
+
+			Print(arr, n);
+
 		}
 	}
 }

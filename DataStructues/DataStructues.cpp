@@ -9,8 +9,8 @@
 int main()
 {
 	//Swap theExample;
-	//Searching theExample;
-	StringAlgorithm theExample;
+	Searching theExample;
+	//StringAlgorithm theExample;
 
 	theExample.Run();
 

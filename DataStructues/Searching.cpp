@@ -1,5 +1,7 @@
 #include "Searching.h"
 #include <iostream>
+#include <iomanip>
+#include <cassert>
 
 Searching::Searching()
 {
@@ -11,6 +13,7 @@ Searching::~Searching()
 
 int Searching::Sequential_Search(int* arr, int size, int index)
 {
+	// Horowitz 자료구조 참고
 	int i;
 	for (i = 0; i < size && arr[i] != index; ++i);
 	if (i == size) return -1;
@@ -22,7 +25,7 @@ int Searching::Sequential_Search(int* arr, int size, int index)
 	//		return i;
 	//}
 
-	return -1;
+	// return -1;
 }
 
 int Searching::Count(int* arr, int size, int select)
@@ -88,21 +91,80 @@ void Searching::Print(int* arr, int size)
 	std::cout << std::endl;
 }
 
+void Searching::PrintHelper(int* arr, int n, int left, int right)
+{
+	std::cout << "[" << left << "," << right << "]" << std::endl;
+
+	std::cout << "Indices: ";
+	for (int i = left; i <= right; ++i)
+		std::cout << std::setw(2) << i << " ";
+	std::cout << std::endl;
+
+	std::cout << "Values : " << std::setw(2);
+	for (int i = left; i <= right; ++i)
+		std::cout << std::setw(2) << arr[i] << " ";
+	std::cout << std::endl;
+
+
+}
+
+int Searching::BinarySearch(int* arr, int n, int x)
+{
+	int left = 0;
+	int right = n - 1;
+
+	while (left <= right)
+	{
+		PrintHelper(arr, n, left, right);
+		
+		int middle = (left + right) / 2;
+		std::cout << "middle" << std::endl;
+
+		if (x < arr[middle])
+		{
+			right = middle - 1;
+			std::cout << "right " << right << std::endl;
+		}
+		else if (x > arr[middle])
+		{
+			left = middle + 1;
+			std::cout << "left " << left << std::endl;
+		}
+		else
+		{
+			std::cout << "Found " << middle << std::endl;
+			return middle;
+		}
+
+		//break;
+	}
+
+	std::cout << "Not found" << std::endl;
+	return -1;
+}
+
 void Searching::Run()
 {
-	int arr[] = { 8,1,1,3,2,5,1,2,1,1 };
+	int arr[] = { 0,1,2,3,4,5,6,7,8,9 };
 	int n = sizeof(arr) / sizeof(arr[0]);
+
+	 assert(n > 0);
+
+	BinarySearch(arr, n, 3);
+
+	//int arr[] = { 8,1,1,3,2,5,1,2,1,1 };
+	//int n = sizeof(arr) / sizeof(arr[0]);
 
 	//std::cout << "Count 9 = " << Count(arr, n, 9) << std::endl;
 	//std::cout << "Count 2 = " << Count(arr, n, 2) << std::endl;
 	//std::cout << "Count 8 = " << Count(arr, n, 8) << std::endl;
 	//std::cout << "Count 1 = " << Count(arr, n, 1) << std::endl;
 	//std::cout << std::endl;
-	
-	std::cout << "Search 2 = " << Sequential_Search(arr, n, 2) << std::endl;
-	std::cout << "Search 5 = " << Sequential_Search(arr, n, 5) << std::endl;
-	std::cout << "Search 9 = " << Sequential_Search(arr, n, 9) << std::endl;
-	std::cout << std::endl;
+	//
+	//std::cout << "Search 2 = " << Sequential_Search(arr, n, 2) << std::endl;
+	//std::cout << "Search 5 = " << Sequential_Search(arr, n, 5) << std::endl;
+	//std::cout << "Search 9 = " << Sequential_Search(arr, n, 9) << std::endl;
+	//std::cout << std::endl;
 
 	//InsertionSort(arr, n);
 	//Print(arr, n);

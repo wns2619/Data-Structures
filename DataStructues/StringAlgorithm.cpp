@@ -69,5 +69,4 @@ void StringAlgorithm::InsertionSort(char* arr, int size)
 
 		arr[j + 1] = static_cast<char>(key);
 	}
-
 }
