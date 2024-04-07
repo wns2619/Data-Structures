@@ -5,12 +5,14 @@
 #include "Swap.h"
 #include "Searching.h"
 #include "StringAlgorithm.h"
+#include "Recursion.h"
 
 int main()
 {
 	//Swap theExample;
-	Searching theExample;
+	//Searching theExample;
 	//StringAlgorithm theExample;
+	Recursion theExample;
 
 	theExample.Run();
 

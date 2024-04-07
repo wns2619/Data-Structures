@@ -140,11 +140,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp" />
+    <ClCompile Include="Recursion.cpp" />
     <ClCompile Include="Searching.cpp" />
     <ClCompile Include="StringAlgorithm.cpp" />
     <ClCompile Include="Swap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Recursion.h" />
     <ClInclude Include="Searching.h" />
     <ClInclude Include="StringAlgorithm.h" />
     <ClInclude Include="Swap.h" />

@@ -14,6 +14,9 @@
     <Filter Include="소스 파일\StringAlgorithm">
       <UniqueIdentifier>{14eb3b7c-d35a-4330-b17d-6716cbaf1185}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Recursion">
+      <UniqueIdentifier>{aaf274af-7c25-46e9-873a-fb8dcc39c100}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp">
@@ -28,6 +31,9 @@
     <ClCompile Include="StringAlgorithm.cpp">
       <Filter>소스 파일\StringAlgorithm</Filter>
     </ClCompile>
+    <ClCompile Include="Recursion.cpp">
+      <Filter>소스 파일\Recursion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Swap.h">
@@ -38,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="StringAlgorithm.h">
       <Filter>소스 파일\StringAlgorithm</Filter>
+    </ClInclude>
+    <ClInclude Include="Recursion.h">
+      <Filter>소스 파일\Recursion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
