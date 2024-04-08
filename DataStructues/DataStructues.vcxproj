@@ -139,15 +139,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Array2D.cpp" />
     <ClCompile Include="DataStructues.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="Polynomial.cpp" />
     <ClCompile Include="Recursion.cpp" />
     <ClCompile Include="Searching.cpp" />
+    <ClCompile Include="SparseMatrix.cpp" />
+    <ClCompile Include="SparsePolynomial.cpp" />
     <ClCompile Include="StringAlgorithm.cpp" />
     <ClCompile Include="Swap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array2D.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MyString.h" />
+    <ClInclude Include="Polynomial.h" />
     <ClInclude Include="Recursion.h" />
     <ClInclude Include="Searching.h" />
+    <ClInclude Include="SparseMatrix.h" />
+    <ClInclude Include="SparsePolynomial.h" />
     <ClInclude Include="StringAlgorithm.h" />
     <ClInclude Include="Swap.h" />
   </ItemGroup>

@@ -1,18 +1,31 @@
 ﻿// DataStructues.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
-
+#define _CRT_SECURE_NO_WARNINGS
 
 #include "Swap.h"
 #include "Searching.h"
 #include "StringAlgorithm.h"
 #include "Recursion.h"
+#include "MyString.h"
+#include "Polynomial.h"
+#include "SparsePolynomial.h"
+#include "Matrix.h"
+#include "Array2D.h"
+#include "SparseMatrix.h"
+
 
 int main()
 {
 	//Swap theExample;
 	//Searching theExample;
 	//StringAlgorithm theExample;
-	Recursion theExample;
+	//Recursion theExample;
+	//MyString theExample;
+	//Polynomial theExample;
+	//SparsePolynomial theExample;
+	//Matrix theExample;
+	//Array2D theExample;
+	SparseMatrix theExample;
 
 	theExample.Run();
 

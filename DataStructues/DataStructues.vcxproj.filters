@@ -17,6 +17,24 @@
     <Filter Include="소스 파일\Recursion">
       <UniqueIdentifier>{aaf274af-7c25-46e9-873a-fb8dcc39c100}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MyString">
+      <UniqueIdentifier>{9a453f66-f3a1-4d55-bef2-3c7f9136276a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Polynomial">
+      <UniqueIdentifier>{1302e4b3-82bd-4047-ae67-2b191fc5df08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SparsePolynomial">
+      <UniqueIdentifier>{370472f5-e563-4b62-992a-e37bdbf50dcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Matrix">
+      <UniqueIdentifier>{f5575c71-d2ca-44a5-bd31-e80bc2996486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Array2D">
+      <UniqueIdentifier>{d8449a03-3558-41b6-845d-9cc9423d15c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\SparseMatrix">
+      <UniqueIdentifier>{5ccb9f73-227a-41fe-88c2-ede073232384}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp">
@@ -34,6 +52,24 @@
     <ClCompile Include="Recursion.cpp">
       <Filter>소스 파일\Recursion</Filter>
     </ClCompile>
+    <ClCompile Include="MyString.cpp">
+      <Filter>소스 파일\MyString</Filter>
+    </ClCompile>
+    <ClCompile Include="Polynomial.cpp">
+      <Filter>소스 파일\Polynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="SparsePolynomial.cpp">
+      <Filter>소스 파일\SparsePolynomial</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>소스 파일\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="Array2D.cpp">
+      <Filter>소스 파일\Array2D</Filter>
+    </ClCompile>
+    <ClCompile Include="SparseMatrix.cpp">
+      <Filter>소스 파일\SparseMatrix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Swap.h">
@@ -47,6 +83,24 @@
     </ClInclude>
     <ClInclude Include="Recursion.h">
       <Filter>소스 파일\Recursion</Filter>
+    </ClInclude>
+    <ClInclude Include="MyString.h">
+      <Filter>소스 파일\MyString</Filter>
+    </ClInclude>
+    <ClInclude Include="Polynomial.h">
+      <Filter>소스 파일\Polynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="SparsePolynomial.h">
+      <Filter>소스 파일\SparsePolynomial</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>소스 파일\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Array2D.h">
+      <Filter>소스 파일\Array2D</Filter>
+    </ClInclude>
+    <ClInclude Include="SparseMatrix.h">
+      <Filter>소스 파일\SparseMatrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
