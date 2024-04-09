@@ -35,6 +35,18 @@
     <Filter Include="소스 파일\SparseMatrix">
       <UniqueIdentifier>{5ccb9f73-227a-41fe-88c2-ede073232384}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Stack">
+      <UniqueIdentifier>{f611d2c9-2833-42d3-8768-df13daae4312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Queue">
+      <UniqueIdentifier>{63361b4f-d51a-4dcf-81a7-b7875b74d96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Josephus">
+      <UniqueIdentifier>{224a2f8f-9ab4-422e-8436-bdc11d670a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Deque">
+      <UniqueIdentifier>{ba187ef2-c7d9-47d4-9f43-e7ce83d67dfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp">
@@ -70,6 +82,12 @@
     <ClCompile Include="SparseMatrix.cpp">
       <Filter>소스 파일\SparseMatrix</Filter>
     </ClCompile>
+    <ClCompile Include="Stack.cpp">
+      <Filter>소스 파일\Stack</Filter>
+    </ClCompile>
+    <ClCompile Include="Josephus.cpp">
+      <Filter>소스 파일\Josephus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Swap.h">
@@ -101,6 +119,18 @@
     </ClInclude>
     <ClInclude Include="SparseMatrix.h">
       <Filter>소스 파일\SparseMatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>소스 파일\Stack</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>소스 파일\Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="Josephus.h">
+      <Filter>소스 파일\Josephus</Filter>
+    </ClInclude>
+    <ClInclude Include="Deque.h">
+      <Filter>소스 파일\Deque</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
