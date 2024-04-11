@@ -47,6 +47,15 @@
     <Filter Include="소스 파일\Deque">
       <UniqueIdentifier>{ba187ef2-c7d9-47d4-9f43-e7ce83d67dfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\SinglyLinkedList">
+      <UniqueIdentifier>{27680ff5-993e-4928-ab63-37e2ca014567}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\DoublyLinkedList">
+      <UniqueIdentifier>{459267ce-e8ff-4796-af70-dc739bc00003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\BinaryTree">
+      <UniqueIdentifier>{039e6e15-323e-4a0d-9062-07c606250d41}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp">
@@ -131,6 +140,15 @@
     </ClInclude>
     <ClInclude Include="Deque.h">
       <Filter>소스 파일\Deque</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglyLinkedList.h">
+      <Filter>소스 파일\SinglyLinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="DoublyLinkedList.h">
+      <Filter>소스 파일\DoublyLinkedList</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>소스 파일\BinaryTree</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

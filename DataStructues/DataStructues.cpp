@@ -2,69 +2,195 @@
 //
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "Swap.h"
-#include "Searching.h"
-#include "StringAlgorithm.h"
-#include "Recursion.h"
-#include "MyString.h"
-#include "Polynomial.h"
-#include "SparsePolynomial.h"
-#include "Matrix.h"
-#include "Array2D.h"
-#include "SparseMatrix.h"
 #include "Stack.h"
 #include "Queue.h"
-#include "Josephus.h"
 #include "Deque.h"
+#include "SinglyLinkedList.h"
+#include "DoublyLinkedList.h"
+#include "BinaryTree.h"
 
 using namespace std;
 
-int Prec(char c); // 연산자 우선순위를 반환
+
+// Function to return precedence of operators
+int Prec(char c);
 void InfixToPostfix(Queue<char>& q, Queue<char>& output);
 int EvalPostfix(Queue<char>& q);
 
+class ExpressionTree : public BinaryTree<char>
+{
+public:
+	typedef BinaryTree<char> Base;
+
+	ExpressionTree(Node* root) : Base(root) {}
+
+	bool IsDigit(char c)
+	{
+		if (c >= '0' && c <= '9') return true;
+		else return false;
+	}
+
+	int Evaluate()
+	{
+		return Evaluate(Base::root_);
+	}
+
+	int Evaluate(Node* node)
+	{
+		// TODO: 트리에 저장된 수식의 결과값을 계산
+		if (nullptr == node) return 0;
+
+		if (node->item >= '0' && node->item <= '9')
+			return node->item - '0';
+		else if (node->item == '*')
+			return Evaluate(node->left) * Evaluate(node->right);
+		else if (node->item == '-')
+			return Evaluate(node->left) - Evaluate(node->right);
+		else if (node->item == '+')
+			return Evaluate(node->left) + Evaluate(node->right);
+		else
+			return Evaluate(node->left) / Evaluate(node->right);
+
+		return 0;
+	}
+
+	void Infix() { Infix(root_); cout << endl; }
+	void Infix(Node* node) {
+		// TODO: 수식을 Infix 형식으로 출력 (괄호 포함)
+		 // (5+((3-2)*4)) <- 출력 예시
+		if (node != nullptr)
+		{
+			if (!IsDigit(node->item)) std::cout << "(";
+			Infix(node->left);
+			cout << node->item;
+			Infix(node->right);
+			if (!IsDigit(node->item)) cout << ")";
+		}
+	}
+
+	void Postfix() { Postfix(root_);  cout << endl; }
+	void Postfix(Node* node) {
+		// TODO: 수식을 Postfix 형식으로 출력
+		 // 532-4*+ <- 출력 예시
+		if (node != nullptr)
+		{
+			Postfix(node->left);
+			Postfix(node->right);
+			cout << node->item;
+		}
+	}
+
+	// Infix -> postfix -> expression tree
+	ExpressionTree(const char* infix)
+	{
+		
+		Queue<char> q;
+		for (int i = 0; infix[i] != '\0'; i++)
+			q.Enqueue(infix[i]);
+		cout << "  Infix: ";
+		q.Print();
+		Queue<char> postfix;
+		InfixToPostfix(q, postfix);
+		cout << "Postfix: ";
+		postfix.Print();
+
+		// Postfix -> Expression tree
+
+		Stack<Node*> s;
+
+		while (!postfix.IsEmpty())
+		{
+			char c = postfix.Front();
+			postfix.Dequeue();
+
+			// Infix -> Postfix (예제 재사용)
+			// (5+((3-2)*4)) ->  // 532-4*+ <- 출력 예시
+			if (c >= '0' && c <= '9')
+			{
+				// TODO:
+				Node* temp = new Node{ c, nullptr, nullptr };
+				s.Push(temp);
+			}
+			else
+			{
+				Node* right = s.Top();
+				s.Pop();
+				Node* left = s.Top();
+				s.Pop();
+
+				Node* temp = new Node{ c, left, right };
+				s.Push(temp);
+			}
+		}
+
+		root_ = s.Top();
+	}
+};
+
 int main()
 {
-#pragma region Example
-	//Swap theExample;
-	//Searching theExample;
-	//StringAlgorithm theExample;
-	//Recursion theExample;
-	//MyString theExample;
-	//Polynomial theExample;
-	//SparsePolynomial theExample;
-	//Matrix theExample;
-	//Array2D theExample;
-	//SparseMatrix theExample;
-	//Josephus theExample;
-	//theExample.Run();
-#pragma endregion
-	// 예제에서는 빈칸 없이 한 자리 숫자만 가능
+	using Node = ExpressionTree::Node;
 
-	//const char infix[] = "8/2+(3+4)*5-1*2";
-	const char infix[] = "1+(1*2+3)*4";
-	//const char infix[] = "1+2*3+3";
-	//const char infix[] = "1+2*(3+1)";
-	const int size = sizeof(infix) / sizeof(char) - 1;
+	// 5 + (3 - 2) * 4
+	// 
+	//    +
+	//	/   \
+	// 5     *
+	//	    / \
+	//	   -   4
+	//	  / \
+	//	 3   2
 
-	// 큐에 모두 넣기
-	Queue<char> q;
-	for (int i = 0; i < size; i++)
-		q.Enqueue(infix[i]);
+	Node* n1 = new Node{ '5', nullptr, nullptr };
+	Node* n2 = new Node{ '+', nullptr, nullptr };
+	Node* n3 = new Node{ '3', nullptr, nullptr };
+	Node* n4 = new Node{ '-', nullptr, nullptr };
+	Node* n5 = new Node{ '2', nullptr, nullptr };
+	Node* n6 = new Node{ '*', nullptr, nullptr };
+	Node* n7 = new Node{ '4', nullptr, nullptr };
 
-	Queue<char> postfix;
+	// +
+	n2->left = n1; // 5
+	n2->right = n6; // *
 
-	cout << "Infix: ";
-	q.Print();
+	// *
+	n6->left = n4; // -
+	n6->right = n7; // 4
+
+	// -
+	n4->left = n3; // 3
+	n4->right = n5; // 2
+
+	ExpressionTree tree(n2);
+
+	tree.Print2D();
+
+	// 수식 트리에 저장되어 있는 수식을 실제로 계산해서 그 결과를 출력합니다.
+	cout << "Evaluated = " << tree.Evaluate() << endl; // Evaluated = 9
+
+	/// 수식 트리에 저장되어 있는 수식을 Infix 방식으로 출력합니다.
+	cout << "  Infix: ";
+	tree.Infix();   // (5+((3-2)*4)) <- 출력 예시
+
+	// 수식 트리에 저장되어 있는 수식을 Postfix 방식으로 출력합니다.
+	cout << "Postfix: ";
+	tree.Postfix(); // 532-4*+ <- 출력 예시
+
 	cout << endl;
 
-	InfixToPostfix(q, postfix);
+	// Infix -> Postfix -> Expression Tree
+	{
+		// const char infix[] = "1+(1*2+3)*4";
+		const char infix[] = "(5+((3-2)*4))";
 
-	cout << "Postfix: ";
-	postfix.Print();
+		// 생성자에서 문자열로 입력받은 수식을 내부적으로 Infix->Postfix 과정을 거쳐 트리로 저장합니다.
+		ExpressionTree tree(infix);
 
-	cout << "Evaluated = " << EvalPostfix(postfix) << endl;
-	
+		tree.Print2D();
+
+		// 수식 트리에 저장되어 있는 수식을 실제로 계산해서 그 결과를 출력합니다.
+		cout << "Evaluated = " << tree.Evaluate() << endl; // Evaluated = 9
+	}
 
 	return 0;
 }
@@ -77,7 +203,7 @@ int Prec(char c)
 	else if (c == '+' || c == '-')
 		return 1;
 	else
-		return -1; // '('는 우선순위가 아주 낮은 것으로 처리, ')' 닫는 괄호를 만날때까지 남겨두기 위함
+		return -1; // '('는 우선순위가 아주 낮은 것으로 처리
 }
 
 void InfixToPostfix(Queue<char>& q, Queue<char>& output)
@@ -91,9 +217,8 @@ void InfixToPostfix(Queue<char>& q, Queue<char>& output)
 		char c = q.Front();
 		q.Dequeue();
 
-		cout << c << endl;
+		//cout << c << endl;
 
-		
 		if (c >= '0' && c <= '9') // 숫자(피연산자)라면 output에 추가
 			output.Enqueue(c);
 		else if (c == '(') // 여는 괄호라면 스택에 추가
@@ -101,32 +226,31 @@ void InfixToPostfix(Queue<char>& q, Queue<char>& output)
 		else if (c == ')') // 닫는 괄호를 만나면
 		{
 			// 여는 괄호 전까지를 스택에서 꺼내서 출력에 넣기
-			// 여는 괄호 제거
 			while (s.Top() != '(')
 			{
 				output.Enqueue(s.Top());
 				s.Pop();
 			}
-			s.Pop();
-
+			s.Pop(); // 여는 괄호 제거
 		}
 		else // 연산자를 만나면
 		{
+			// 스택에서 c보다 우선순위가 높거나 같은 것들을 꺼내서 추가
 			while (!s.IsEmpty() && Prec(c) <= Prec(s.Top()))
 			{
 				output.Enqueue(s.Top());
 				s.Pop();
 			}
 
+			// c는 스택에 추가
 			s.Push(c);
 		}
-		
 
-		cout << "Stack: ";
-		s.Print();
-		cout << "Output:";
-		output.Print();
-		cout << endl;
+		//cout << "Stack: ";
+		//s.Print();
+		//cout << "Output:";
+		//output.Print();
+		//cout << endl;
 	}
 
 	// 스택에 남아있는 것들을 모두 추가
@@ -146,37 +270,34 @@ int EvalPostfix(Queue<char>& q)
 		char c = q.Front();
 		q.Dequeue();
 
-		cout << c << endl;
+		//cout << c << endl;
 
-		
 		if (c != '+' && c != '-' && c != '*' && c != '/')
 		{
-			// 입력이 연산자가 아니면 일단 저장
-			// 문자를 숫자로 변환 c - '0' 예: int('9' - '0') -> 정수 9
-			s.Push((c - '0'));
+			s.Push(c - '0'); // 입력이 연산자가 아니면 일단 저장
 		}
 		else
 		{
-			cout << "Operator: " << c << endl;
+			//cout << "Operator: " << c << endl;
 
 			// 입력이 연산자이면 스택에서 꺼내서 연산에 사용
-			int value2 = s.Top();
+			int op2 = s.Top(); // op1, op2 순서 주의
 			s.Pop();
-			int value = s.Top();
+			int op1 = s.Top();
 			s.Pop();
 
 			if (c == '+') {
-				s.Push(value + value2);
+				s.Push(op1 + op2);
 			}
 			else if (c == '-') {
-				s.Push(value - value2);
+				s.Push(op1 - op2);
 			}
 			else if (c == '*') {
-				s.Push(value * value2);
+				s.Push(op1 * op2);
 			}
 			else if (c == '/')
 			{
-				s.Push(value / value2);
+				s.Push(op1 / op2);
 			}
 			else
 			{
@@ -184,10 +305,9 @@ int EvalPostfix(Queue<char>& q)
 				exit(-1); // 강제 종료
 			}
 		}
-		
 
-		cout << "Stack: ";
-		s.Print();
+		//cout << "Stack: ";
+		//s.Print();
 	}
 
 	return s.Top();

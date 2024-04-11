@@ -155,7 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array2D.h" />
+    <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Deque.h" />
+    <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="Josephus.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MyString.h" />
@@ -163,6 +165,7 @@
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Recursion.h" />
     <ClInclude Include="Searching.h" />
+    <ClInclude Include="SinglyLinkedList.h" />
     <ClInclude Include="SparseMatrix.h" />
     <ClInclude Include="SparsePolynomial.h" />
     <ClInclude Include="Stack.h" />
