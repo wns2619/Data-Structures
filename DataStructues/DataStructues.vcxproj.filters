@@ -56,6 +56,15 @@
     <Filter Include="소스 파일\BinaryTree">
       <UniqueIdentifier>{039e6e15-323e-4a0d-9062-07c606250d41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MaxHeap">
+      <UniqueIdentifier>{a5c4865f-11e3-45e7-94ea-3b074ddb773e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\BinarySearchTree">
+      <UniqueIdentifier>{6505c561-7099-4d58-b94d-c7bf9769eb61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\AVL">
+      <UniqueIdentifier>{a86ae08d-8a4a-4a8d-8008-931c59768b57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataStructues.cpp">
@@ -149,6 +158,15 @@
     </ClInclude>
     <ClInclude Include="BinaryTree.h">
       <Filter>소스 파일\BinaryTree</Filter>
+    </ClInclude>
+    <ClInclude Include="MaxHeap.h">
+      <Filter>소스 파일\MaxHeap</Filter>
+    </ClInclude>
+    <ClInclude Include="BinarySearchTree.h">
+      <Filter>소스 파일\BinarySearchTree</Filter>
+    </ClInclude>
+    <ClInclude Include="AVL.h">
+      <Filter>소스 파일\AVL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -155,11 +155,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Array2D.h" />
+    <ClInclude Include="AVL.h" />
+    <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Deque.h" />
     <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="Josephus.h" />
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="MyString.h" />
     <ClInclude Include="Polynomial.h" />
     <ClInclude Include="Queue.h" />
